@@ -28,7 +28,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var cell = tableView.dequeueReusableCell(withIdentifier: simpleTavleIdentifier)
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: simpleTavleIdentifier)
+            
         }
+        let image = UIImage(named: "star2")
+        cell?.imageView?.image = image
+        let highlightedImage = UIImage(named: "star")
+        cell?.imageView?.highlightedImage = highlightedImage
         
         cell?.textLabel?.text = dwarves[indexPath.row]
         return cell!

@@ -24,6 +24,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return dwarves.count
     }
     
+    //indent rows
+    func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
+        return indexPath.row % 4;
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: simpleTavleIdentifier)
         if (cell == nil) {

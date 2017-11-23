@@ -27,13 +27,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: simpleTavleIdentifier)
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: simpleTavleIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: simpleTavleIdentifier)
             
         }
         let image = UIImage(named: "star2")
         cell?.imageView?.image = image
         let highlightedImage = UIImage(named: "star")
         cell?.imageView?.highlightedImage = highlightedImage
+        
+        if indexPath.row < 7 {
+            cell?.detailTextLabel?.text = "Mr Disney"
+        } else {
+            cell?.detailTextLabel?.text = "Mr Tolkien"
+        }
         
         cell?.textLabel?.text = dwarves[indexPath.row]
         return cell!

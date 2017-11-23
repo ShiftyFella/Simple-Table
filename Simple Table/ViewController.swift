@@ -24,6 +24,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return dwarves.count
     }
     
+    //1st row not selectable
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return indexPath.row == 0 ? nil: indexPath
+    }
+    
     //indent rows
     func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
         return indexPath.row % 4;
@@ -50,6 +55,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let rowValue = dwarves[indexPath.row]
+        let message = "You selected \(rowValue)"
+        
+        let controller = UIAlertController(title: "Row Selected", message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Yes I did", style: .default, handler: nil)
+        
+        controller.addAction(action)
+        present(controller,animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
